@@ -17,7 +17,7 @@ To build this project, you require:
 
 ## Libraries
 
-* [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui) - Transform @Composable functions and enable optimizations with a Kotlin compiler plugin - 1.3.3
+* [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui) - Fundamental components of compose UI needed to interact with the device, including layout, drawing, and input - 1.3.3
 * [Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-compiler) - Transform @Composable functions and enable optimizations with a Kotlin compiler plugin - 1.3.2
 
 ## License

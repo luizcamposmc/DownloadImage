@@ -2,19 +2,24 @@
 
 ## Features
 
+* Jetpack Compose
+
 ## Prerequisite
 
 To build this project, you require:
 
 * Android Studio Electric Eel
 * Gradle 7.5
-* Kotlin 1.7.21
+* Kotlin 1.7.20
 * Android Gradle Plugin 7.4.0
 
 ## Screenshots
 
 ## Libraries
-  
+
+* [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui) - Transform @Composable functions and enable optimizations with a Kotlin compiler plugin - 1.3.3
+* [Compose Compiler](https://developer.android.com/jetpack/androidx/releases/compose-compiler) - Transform @Composable functions and enable optimizations with a Kotlin compiler plugin - 1.3.2
+
 ## License
 
 ```license

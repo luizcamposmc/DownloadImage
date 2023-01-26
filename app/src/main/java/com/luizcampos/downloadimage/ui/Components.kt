@@ -9,6 +9,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.luizcampos.downloadimage.R
+import com.luizcampos.downloadimage.helper.Constants
+import com.luizcampos.downloadimage.repository.AndroidDownloadService
 import com.luizcampos.downloadimage.ui.button.FabType
 import com.luizcampos.downloadimage.ui.button.FloatingActionButtonCustom
 
@@ -55,6 +57,8 @@ fun HomePage() {
                 FloatingActionButtonCustom(
                     onClick = {
                         Toast.makeText(context, "Floating Action Button", Toast.LENGTH_SHORT).show()
+                        val downloader = AndroidDownloadService(context)
+                        downloader.downloadFile(Constants.IMAGE_URL)
                     }
                 ).fabType(FabType.FAB)
                     .fabText("Fab Desc")

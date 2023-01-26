@@ -1,5 +1,5 @@
 package com.luizcampos.downloadimage.repository
 
-interface Downloader {
+interface DownloaderRepository {
     fun downloadFile(url: String): Long
 }

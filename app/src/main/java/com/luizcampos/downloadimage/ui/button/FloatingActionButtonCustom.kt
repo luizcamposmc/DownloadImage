@@ -16,7 +16,10 @@ enum class FabType {
     EXTENDED_FAB
 }
 
-class FloatingActionButtonCustom (private val onClick: () -> Unit) {
+class FloatingActionButtonCustom (
+    private val onClick: () -> Unit,
+    private val enable: Boolean = true
+) {
     private var fabType = FabType.FAB
     private var fabText: String = ""
 
@@ -41,58 +44,72 @@ class FloatingActionButtonCustom (private val onClick: () -> Unit) {
             horizontalAlignment = Alignment.End
         ) {
             when (fabType) {
-                FabType.FAB -> Fab (onClick = onClick)
-                FabType.SQUARE_FAB -> SquareFab (onClick = onClick)
-                FabType.EXTENDED_FAB -> ExtendedFab (onClick = onClick, text = fabText)
+                FabType.FAB -> Fab (
+                    onClick = onClick,
+                    enable = enable
+                )
+                FabType.SQUARE_FAB -> SquareFab (
+                    onClick = onClick,
+                    enable = enable
+                )
+                FabType.EXTENDED_FAB -> ExtendedFab (
+                    onClick = onClick,
+                    text = fabText,
+                    enable = enable
+                )
             }
         }
     }
 }
 
 @Composable
-fun Fab(onClick: () -> Unit) {
+fun Fab(onClick: () -> Unit, enable: Boolean) {
     FloatingActionButton(
-        onClick = onClick,
+        onClick = { if (enable) onClick() },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,
-        modifier = Modifier.padding(20.dp)
+        modifier = Modifier.padding(20.dp),
+
     ) {
-        Icon(
-            imageVector = Icons.Filled.Add,
-            contentDescription = ""
-        )
+        IconAdd(enable = enable)
     } // FloatingActionButton
 }
 
 @Composable
-fun SquareFab(onClick: () -> Unit) {
+fun SquareFab(onClick: () -> Unit, enable: Boolean) {
     FloatingActionButton(
-        onClick = onClick,
+        onClick = { if (enable) onClick() },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,
         shape = RectangleShape
     ) {
-        Icon(
-            imageVector = Icons.Filled.Add,
-            contentDescription = ""
-        )
+        IconAdd(enable = enable)
     } // FloatingActionButton
 }
 
 @Composable
-fun ExtendedFab(onClick: () -> Unit, text: String) {
+fun ExtendedFab(onClick: () -> Unit, text: String, enable: Boolean) {
     ExtendedFloatingActionButton(
         text = { Text(text = text) },
-        onClick = onClick,
+        onClick = { if (enable) onClick() },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,
         icon = {
-            Icon(
-                imageVector = Icons.Filled.Add,
-                contentDescription = ""
-            )
+            IconAdd(enable = enable)
         } // icon
     ) // ExtendedFloatingActionButton
+}
+
+@Composable
+fun IconAdd(enable: Boolean) {
+    Icon(
+        imageVector = Icons.Filled.Add,
+        contentDescription = "",
+        tint =
+        if (enable)
+            LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+        else MaterialTheme.colors.primaryVariant
+    )
 }
 
 

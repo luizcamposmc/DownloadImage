@@ -49,8 +49,6 @@ class FloatingActionButtonCustom (private val onClick: () -> Unit) {
     }
 }
 
-
-
 @Composable
 fun Fab(onClick: () -> Unit) {
     FloatingActionButton(

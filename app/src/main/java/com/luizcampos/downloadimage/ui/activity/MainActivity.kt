@@ -1,4 +1,4 @@
-package com.luizcampos.downloadimage
+package com.luizcampos.downloadimage.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,9 @@ import com.luizcampos.downloadimage.helper.Constants
 import com.luizcampos.downloadimage.helper.ext.hasGrantedAllPermissions
 import com.luizcampos.downloadimage.ui.HomePage
 import com.luizcampos.downloadimage.ui.theme.DownloadImageTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private var grantedAllPermissions: Boolean = false

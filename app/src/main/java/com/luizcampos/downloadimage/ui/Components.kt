@@ -1,6 +1,5 @@
 package com.luizcampos.downloadimage.ui
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -8,16 +7,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.luizcampos.downloadimage.R
-import com.luizcampos.downloadimage.helper.Constants
-import com.luizcampos.downloadimage.repository.AndroidDownloadService
+import com.luizcampos.downloadimage.helper.ext.toastShort
 import com.luizcampos.downloadimage.ui.button.FabType
 import com.luizcampos.downloadimage.ui.button.FloatingActionButtonCustom
+import com.luizcampos.downloadimage.viewmodel.MainViewModel
 
 @Preview
 @Composable
 fun HomePage() {
     val context = LocalContext.current
+
+    val viewModel: MainViewModel = hiltViewModel()
 
     Surface(
         // on below line we are specifying modifier and color for our app
@@ -56,9 +58,10 @@ fun HomePage() {
             ) {
                 FloatingActionButtonCustom(
                     onClick = {
-                        Toast.makeText(context, "Floating Action Button", Toast.LENGTH_SHORT).show()
-                        val downloader = AndroidDownloadService(context)
-                        downloader.downloadFile(Constants.IMAGE_URL)
+                        context.toastShort("Floating Action Button")
+                        viewModel
+                            .checkPermissions()
+                            .downloadImage()
                     }
                 ).fabType(FabType.FAB)
                     .fabText("Fab Desc")
